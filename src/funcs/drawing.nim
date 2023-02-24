@@ -19,9 +19,9 @@ proc drawInfo*(asciiArt: bool) =
 
   const  # icons before cotegores
     userIcon   = " "  # recomended: " " or "|>"
-    hnameIcon  = " "  # recomended: " " or "|>"
-    distroIcon = " "  # recomended: " " or "|>"
-    kernelIcon = " "  # recomended: " " or "|>"
+    hnameIcon  = "󰍹 "  # recomended: " " or "|>"
+    distroIcon = " "  # recomended: " " or "|>"
+    kernelIcon = " "  # recomended: " " or "|>"
     uptimeIcon = " "  # recomended: " " or "|>"
     shellIcon  = " "  # recomended: " " or "|>"
     pkgsIcon   = " "  # recomended: " " or "|>"
@@ -30,14 +30,14 @@ proc drawInfo*(asciiArt: bool) =
     # please insert any char after the icon
     # to avoid the bug with cropping the edge of the icon
 
-    dotIcon = ""  # recomended: "" or "■"
+    dotIcon = ""  # recomended: "" or "■"
     # icon for demonstrate colors
 
   const  # categories
     userCat   = " user   │ "  # recomended: " user   │ "
     hnameCat  = " hname  │ "  # recomended: " hname  │ "
     distroCat = " distro │ "  # recomended: " distro │ "
-    kernelCat = " kernel │ "  # recomended: " kernel │ "-
+    kernelCat = " kernel │ "  # recomended: " kernel │ "
     uptimeCat = " uptime │ "  # recomended: " uptime │ "
     shellCat  = " shell  │ "  # recomended: " shell  │ "
     pkgsCat   = " pkgs   │ "  # recomended: " pkgs   │ "
@@ -56,11 +56,11 @@ proc drawInfo*(asciiArt: bool) =
 
   const  # aliases for colors
     color1 = fgRed
-    color2 = fgYellow
-    color3 = fgGreen
-    color4 = fgCyan
-    color5 = fgBlue
-    color6 = fgMagenta
+    color2 = fgGreen
+    color3 = fgYellow
+    color4 = fgBlue
+    color5 = fgMagenta
+    color6 = fgCyan
     color7 = fgWhite
     color8 = fgBlack
     color0 = fgDefault
@@ -69,19 +69,19 @@ proc drawInfo*(asciiArt: bool) =
   if not asciiArt:
     discard
   else:
-    stdout.styledWrite(styleBright, coloredLogo[0], coloredLogo[1], color0)
+    # stdout.styledWrite(styleBright, coloredLogo[0], coloredLogo[1], color0)
 
   # colored out
-    stdout.styledWrite("\n", styleBright, "  ╭───────────╮\n")
-    stdout.styledWrite("  │ ", color2, userIcon, color0, userCat, color1, userInfo, color0, "\n",)
+    stdout.styledWrite(styleBright, "  ╭───────────╮\n")
+    stdout.styledWrite("  │ ", color1, userIcon, color0, userCat, color1, userInfo, color0, "\n",)
     if not isEmptyOrWhitespace(hostnameInfo):
-      stdout.styledWrite("  │ ", color2, hnameIcon, color0, hnameCat, color2, hostnameInfo, color0, "\n")
-    stdout.styledWrite("  │ ", color3, distroIcon, color0, distroCat, color3, distroInfo, color0, "\n")
-    stdout.styledWrite("  │ ", color4, kernelIcon, color0, kernelCat, color4, kernelInfo, color0, "\n")
-    stdout.styledWrite("  │ ", color5, uptimeIcon, color0, uptimeCat, color5, uptimeInfo, color0, "\n")
-    stdout.styledWrite("  │ ", color6, shellIcon, color0, shellCat, color6, shellInfo, color0, "\n")
-    stdout.styledWrite("  │ ", color1, pkgsIcon, color0, pkgsCat, color1, pkgsInfo, color0, "\n")
-    stdout.styledWrite("  │ ", color2, ramIcon, color0, ramCat, fgYellow, ramInfo, color0, "\n")
+      stdout.styledWrite("  │ ", color1, hnameIcon, color0, hnameCat, color1, hostnameInfo, color0, "\n")
+    stdout.styledWrite("  │ ", color2, distroIcon, color0, distroCat, color2, distroInfo, color0, "\n")
+    stdout.styledWrite("  │ ", color3, kernelIcon, color0, kernelCat, color3, kernelInfo, color0, "\n")
+    stdout.styledWrite("  │ ", color4, uptimeIcon, color0, uptimeCat, color4, uptimeInfo, color0, "\n")
+    stdout.styledWrite("  │ ", color5, shellIcon, color0, shellCat, color5, shellInfo, color0, "\n")
+    stdout.styledWrite("  │ ", color6, pkgsIcon, color0, pkgsCat, color6, pkgsInfo, color0, "\n")
+    stdout.styledWrite("  │ ", color7, ramIcon, color0, ramCat, color7, ramInfo, color0, "\n")
     stdout.styledWrite("  ├───────────┤\n")
-    stdout.styledWrite("  │ ", color7, colorsIcon, color0, colorsCat, color7, dotIcon, " ", color1, dotIcon, " ", color2, dotIcon, " ", color3, dotIcon, " ", color4, dotIcon, " ", color5, dotIcon, " ", color6, dotIcon, " ", color8, dotIcon, color0, "\n")
+    stdout.styledWrite("  │ ", color0, colorsIcon, color0, colorsCat, color1, dotIcon, " ", color2, dotIcon, " ", color3, dotIcon, " ", color4, dotIcon, " ", color5, dotIcon, " ", color6, dotIcon, " ", color7, dotIcon, " ", color8, dotIcon, color0, "\n")
     stdout.styledWrite("  ╰───────────╯\n\n")
